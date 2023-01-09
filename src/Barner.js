@@ -4,7 +4,7 @@ import { Carousel } from "react-responsive-carousel";
 
 const Barner = () => {
   return (
-    <div className="w-full z-0 md:mb-[-250px] gradient-mask-b-0">
+    <div className="w-full z-0 md:mb-[-200px] lg:mb-[-250px] xl:mb-[-350px] gradient-mask-b-0">
       <Carousel
         autoPlay
         infiniteLoop

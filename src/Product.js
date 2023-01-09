@@ -61,7 +61,7 @@ const Product = ({
           </div>
         )}
         <button className="w-full button " onClick={addItemToBasket}>
-          Add to basket
+          Add to Cart
         </button>
       </div>
     </div>

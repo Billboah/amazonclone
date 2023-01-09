@@ -75,13 +75,13 @@ const CheckoutProduct = ({
           className="w-[150px]  button mb-[10px]"
           onClick={addItemToBasket}
         >
-          Add Item
+          Add to Cart
         </button>
         <button
           className="w-[150px] button mt-[10px]"
           onClick={removeItemFromBasket}
         >
-          {count === 1 ? "Remove from basket" : "Remove Item"}
+          Remove from Cart
         </button>
       </div>
     </div>
