@@ -25,7 +25,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="bg-slate-900  flex flex-col sticky top-0 z-[100]">
+    <nav className="bg-slate-800  flex flex-col sticky top-0 z-[100]">
       <div className="h-[80px] flex items-center justify-between">
         <Link
           to="/"
