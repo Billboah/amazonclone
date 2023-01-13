@@ -78,7 +78,7 @@ const ProductFeed = ({ products }) => {
       </div>
       <div className="md:hidden  ">
         <div
-          className={`flex overflow-x-scroll scrollbar-hide ${input && "grid"}`}
+          className={`flex overflow-x-scroll scrollbar-hide ${input && "grid grid-cols-1"}`}
         >
           {products
             .slice(0, 4)
@@ -127,7 +127,7 @@ const ProductFeed = ({ products }) => {
             />
           ))}
         <div
-          className={`flex overflow-x-scroll scrollbar-hide${input && "grid"}`}
+          className={`flex overflow-x-scroll scrollbar-hide ${input && "grid grid-cols-1"}`}
         >
           {products
             .slice(8, 14)
