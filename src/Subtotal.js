@@ -1,5 +1,4 @@
 import React from "react";
-import CurrencyFormat from "react-currency-format";
 import { selectItems, selectUser } from "./features/basketSlice";
 import { useSelector } from "react-redux";
 
@@ -7,31 +6,21 @@ const Subtotal = () => {
   const basket = useSelector(selectItems);
   const user = useSelector(selectUser);
 
-  const getBasketTotal = (basket) =>
-    basket?.reduce((amount, basket) => {
-      return basket.price + amount;
+  const getBasketTotal =  basket?.reduce((total, basket) => {
+      return basket.price + total
     }, 0);
 
   return (
     <div className="flex flex-col justify-space-between p-[20px] bg-white border-solid border-2 border-slate-100 m-[10px]">
-      <CurrencyFormat
-        renderText={(value) => (
           <>
             <p>
-              Subtotal ({basket.length} items): <strong>{value}</strong>
+              Subtotal ({basket.length} items): <strong>{getBasketTotal.toFixed(2)}</strong>
             </p>
             <small className="flex items-center">
               <input type="checkbox" className="mr-5px" />
               This order contains gift
             </small>
           </>
-        )}
-        decimalScale={2}
-        value={getBasketTotal(basket)}
-        displayType={"text"}
-        thousandSeparator={true}
-        prefix={"$"}
-      />
       <button
         disabled={!user}
         className={`button mt-[10px] ${
