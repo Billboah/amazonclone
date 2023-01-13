@@ -99,7 +99,7 @@ const Header = () => {
       >
         <input
           type="search"
-          className="w-full h-[12px] m-[5px] p-[5px] outline-none border-none"
+          className="w-full h-[12px] m-[5px] p-[10px] outline-none border-none"
           onChange={(e) => setValue(e.target.value)}
         />
         <button>
