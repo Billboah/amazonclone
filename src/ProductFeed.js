@@ -112,7 +112,7 @@ const ProductFeed = ({ products }) => {
           .filter(
             (item) =>
               item.title.toLowerCase().includes(input) ||
-              item.category.toLowerCase().includes(input).input
+              item.category.toLowerCase().includes(input)
           )
           .map(({ id, title, image, rating, description, category, price }) => (
             <Product
