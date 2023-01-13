@@ -44,7 +44,7 @@ const Header = () => {
           <input
             type="search"
             className="w-full h-[25px] m-[5px] p-[5px] outline-none border-none"
-            onChange={(e) => setValue(e.target.value)}
+            onChange={(e) => setValue(e.target.value.toLowerCase())}
           />
           <button>
             <SearchIcon className="bg-orange-400 m-0 p-1 !h-[35px] !w-[35px] rounded-[4px] cursor-pointer" />
@@ -100,7 +100,7 @@ const Header = () => {
         <input
           type="search"
           className="w-full h-[12px] m-[5px] p-[10px] outline-none border-none"
-          onChange={(e) => setValue(e.target.value)}
+          onChange={(e) => setValue(e.target.value.toLowerCase())}
         />
         <button>
           <SearchIcon className="bg-orange-400 m-0 p-1 !h-[30px] !w-[30px] rounded-[4px] cursor-pointer" />
