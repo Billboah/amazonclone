@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { auth, facebookProvider, googleProvider } from "./firebase";
+import { auth,  googleProvider } from "./firebase";
 import { signInWithPopup, onAuthStateChanged } from "firebase/auth";
 
 const Login = () => {
@@ -31,12 +31,6 @@ const Login = () => {
           onClick={() => signInWithPopup(auth, googleProvider)}
         >
           Sign in with Google
-        </button>
-        <button
-          className="button w-full mt-[10px]"
-          onClick={() => signInWithPopup(auth, facebookProvider)}
-        >
-          Sign in with Facebook
         </button>
         <p className="mt-[15px] text-xs font-medium">
           By signing-in you agree with Amazone&apos;s Condition of Use and
