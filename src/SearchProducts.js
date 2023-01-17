@@ -3,7 +3,7 @@ import StarIcon from "@mui/icons-material/Star";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "./features/basketSlice";
 
-const Product = ({
+const SearchProducts = ({
   title,
   category,
   description,
@@ -68,4 +68,5 @@ const Product = ({
   );
 };
 
-export default Product;
+
+export default SearchProducts;

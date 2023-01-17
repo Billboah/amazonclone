@@ -16,7 +16,7 @@ const Login = () => {
   }, []);
 
   return (
-    <div className="h-screen bg-white flex flex-col items-center ">
+    <div className="h-screen bg-white flex flex-col items-center min-w-[380px]">
       <Link to="/">
         <img
           className="w-[150px] my-[20px] object-contain"

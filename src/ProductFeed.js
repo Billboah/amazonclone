@@ -1,21 +1,13 @@
 import React from "react";
 import Product from "./Product";
-import { useSelector } from "react-redux";
-import { selectInput } from "./features/basketSlice";
 
 const ProductFeed = ({ products }) => {
-  const input = useSelector(selectInput);
 
   return (
     <>
       <div className="hidden md:grid md:grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  ">
         {products
           .slice(0, 4)
-          .filter(
-            (item) =>
-              item.title.toLowerCase().includes(input) ||
-              item.category.toLowerCase().includes(input)
-          )
           .map(({ id, title, image, rating, description, category, price }) => (
             <Product
               key={id}
@@ -30,17 +22,12 @@ const ProductFeed = ({ products }) => {
           ))}
         <img
           src='https://m.media-amazon.com/images/I/71qid7QFWJL._SX3000_.jpg'
-          className={`md:col-span-full ${input && "hidden"}`}
+          className={`md:col-span-full`}
           alt=""
         />
-        <div className={`md:col-span-2 ${input && "md:col-span-1"}`}>
+        <div className={`md:col-span-2 `}>
           {products
             .slice(4, 5)
-            .filter(
-              (item) =>
-                item.title.toLowerCase().includes(input) ||
-                item.category.toLowerCase().includes(input)
-            )
             .map(
               ({ id, title, image, rating, description, category, price }) => (
                 <Product
@@ -58,11 +45,6 @@ const ProductFeed = ({ products }) => {
         </div>
         {products
           .slice(5, products.lenght)
-          .filter(
-            (item) =>
-              item.title.toLowerCase().includes(input) ||
-              item.category.toLowerCase().includes(input)
-          )
           .map(({ id, title, image, rating, description, category, price }) => (
             <Product
               key={id}
@@ -78,15 +60,10 @@ const ProductFeed = ({ products }) => {
       </div>
       <div className="md:hidden  ">
         <div
-          className={`flex overflow-x-scroll scrollbar-hide ${input && "grid grid-cols-1"}`}
+          className={`flex overflow-x-scroll scrollbar-hide `}
         >
           {products
             .slice(0, 4)
-            .filter(
-              (item) =>
-                item.title.toLowerCase().includes(input) ||
-                item.category.toLowerCase().includes(input)
-            )
             .map(
               ({ id, title, image, rating, description, category, price }) => (
                 <Product
@@ -104,16 +81,11 @@ const ProductFeed = ({ products }) => {
         </div>
         <img
           src='https://m.media-amazon.com/images/I/71qid7QFWJL._SX3000_.jpg'
-          className={`md:col-span-full ${input && "hidden"}`}
+          className={`md:col-span-full `}
           alt=""
         />
         {products
           .slice(4, 8)
-          .filter(
-            (item) =>
-              item.title.toLowerCase().includes(input) ||
-              item.category.toLowerCase().includes(input)
-          )
           .map(({ id, title, image, rating, description, category, price }) => (
             <Product
               key={id}
@@ -127,15 +99,10 @@ const ProductFeed = ({ products }) => {
             />
           ))}
         <div
-          className={`flex overflow-x-scroll scrollbar-hide ${input && "grid grid-cols-1"}`}
+          className={`flex overflow-x-scroll scrollbar-hide`}
         >
           {products
             .slice(8, 14)
-            .filter(
-              (item) =>
-                item.title.toLowerCase().includes(input) ||
-                item.category.toLowerCase().includes(input)
-            )
             .map(
               ({ id, title, image, rating, description, category, price }) => (
                 <Product
@@ -153,11 +120,6 @@ const ProductFeed = ({ products }) => {
         </div>
         {products
           .slice(14, products.lenght)
-          .filter(
-            (item) =>
-              item.title.toLowerCase().includes(input) ||
-              item.category.toLowerCase().includes(input)
-          )
           .map(({ id, title, image, rating, description, category, price }) => (
             <Product
               key={id}

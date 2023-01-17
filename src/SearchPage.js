@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import Barner from "./Barner";
-import ProductFeed from "./ProductFeed";
+import SearchProductFeed from "./SearchProductFeed";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
@@ -22,7 +22,7 @@ const Home = () => {
     <div className="max-w-screen-2xl min-w-[380px] ml-auto mr-auto">
       <Barner />
       <div className="">
-        <ProductFeed products={products} />
+        <SearchProductFeed products={products} />
       </div>
     </div>
   );

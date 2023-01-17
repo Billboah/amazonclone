@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import { auth } from "./firebase";
@@ -12,10 +12,16 @@ const Header = () => {
   const user = useSelector(selectUser);
   const [value, setValue] = useState("");
   const dispatch = useDispatch();
+  const history=useHistory()
 
   const searchInput = (event) => {
     event.preventDefault();
     dispatch(inputValue(value));
+    if (value.length === 0){
+      history.push('/')
+    }else{
+      history.push('/search')
+    }
   };
 
   const login = () => {
@@ -25,7 +31,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="bg-slate-800  flex flex-col sticky top-0 z-[100]">
+    <nav className="bg-slate-800  flex flex-col sticky top-0 z-[100] min-w-[380px]">
       <div className="h-[80px] flex items-center justify-between">
         <Link
           to="/"

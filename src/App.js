@@ -8,6 +8,7 @@ import { auth } from "./firebase";
 import { useEffect } from "react";
 import { setUser } from "./features/basketSlice";
 import { useDispatch } from "react-redux";
+import SearchPage from "./SearchPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,10 @@ function App() {
           <Route path="/checkout">
             <Header />
             <Checkout />
+          </Route>
+          <Route path='/search'>
+          <Header />
+          <SearchPage/>
           </Route>
           <Route path="/login">
             <Login />

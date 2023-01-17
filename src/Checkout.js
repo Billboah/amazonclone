@@ -28,7 +28,7 @@ const Checkout = () => {
   );
 
   return (
-    <div className="flex flex-col items-center lg:items-start lg:flex-row p-[20px]">
+    <div className="flex flex-col items-center lg:items-start lg:flex-row p-[20px] min-w-[380px]">
       <div className="bg-white pr-[10px]">
         <img
           className="w-full mb-[10px]"
