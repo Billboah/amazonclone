@@ -9,7 +9,7 @@ const Login = () => {
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        history.push("/");
+      history.push('/')
       }
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -67,7 +67,7 @@ const Header = () => {
               className="flex flex-col mx-[10px] "
             >
               <span className="text-[9px] md:text-[10px]">
-                {user ? `Hello  ${user}` : "Hello, Sign In"}
+                {user ? `Hello,  ${user}` : "Hello, Sign In"}
               </span>
               <span className="text-[11px] md:text-[13px] font-[800]">
                 Account & Lists
@@ -75,7 +75,7 @@ const Header = () => {
             </div>
           </Link>
           <Link
-            to="/"
+            to={value  ? '/search' : '/'}
             className="text-white hover:border-solid hover:border-white hover:border-[1px] no-underline"
           >
             <div className="flex flex-col mx-[10px] ">

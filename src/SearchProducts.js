@@ -41,7 +41,7 @@ const SearchProducts = ({
         <div>
           {Array(Math.round(rating))
             .fill()
-            .map(( index) => (
+            .map((rating, index) => (
               <StarIcon key={index} className="text-yellow-400 w-2" />
             ))}
         </div>
