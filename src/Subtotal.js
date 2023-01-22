@@ -14,7 +14,7 @@ const Subtotal = () => {
     <div className="flex flex-col justify-space-between p-[20px] bg-white border-solid border-2 border-slate-100 m-[10px]">
           <>
             <p>
-              Subtotal ({basket.length} items): <strong>{getBasketTotal.toFixed(2)}</strong>
+              Subtotal ({basket.length} items): <strong>$ {getBasketTotal.toFixed(2)}</strong>
             </p>
             <small className="flex items-center">
               <input type="checkbox" className="mr-5px" />
