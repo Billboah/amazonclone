@@ -5,16 +5,17 @@ import SearchProducts from './SearchProducts';
 
 const SearchProductFeed = ({ products }) => {
   const input = useSelector(selectInput);
+  const filtered = products
+  .filter(
+    (item) =>
+      item.title.toLowerCase().includes(input) ||
+      item.category.toLowerCase().includes(input)
+  )
+  if(!filtered.length){return<div className='font-bold text-3xl text-center md:mt-40 w-full'>No Result found</div>}
 
   return (
-    <>
       <div className="grid md:grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  ">
-        {products
-          .filter(
-            (item) =>
-              item.title.toLowerCase().includes(input) ||
-              item.category.toLowerCase().includes(input)
-          )
+        {filtered
           .map(({ id, title, image, rating, description, category, price }) => (
             <SearchProducts
               key={id}
@@ -28,7 +29,7 @@ const SearchProductFeed = ({ products }) => {
             />
           ))}
               </div>
-    </>
+  
   );
 };
 
