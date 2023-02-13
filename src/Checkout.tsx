@@ -1,31 +1,37 @@
 import React from "react";
-import CheckoutProduct from "./CheckoutProduct";
-import Subtotal from "./Subtotal";
 import { useSelector } from "react-redux";
+import CheckoutProduct from "./CheckoutProduct";
 import { selectItems } from "./features/basketSlice";
+import Subtotal from "./Subtotal";
+
+interface Item{
+  id:number
+  count:number
+  key:number
+  title:string
+  image:string
+  price:number
+  rating:number
+  description:string
+  hasPrime:any
+}
 
 const Checkout = () => {
   const basket = useSelector(selectItems);
 
-  //Number of the item returning
-  const convert = (arr) => {
-    const res = {};
+  const convert = (arr:any[]) => {
+    const res: {[index: string]: any} = {};
     arr.forEach((obj) => {
-      const key = `${obj.id}`;
-      if (!res[key]) {
-        res[key] = { ...obj, count: 0 };
-      }
-      res[key].count += 1;
+       const key = `${obj.id}}`;
+       if (!res[key]) {
+          res[key] = { ...obj, count: 0 };
+       };
+       res[key].count += 1;
     });
-    return Object.values(res);
-  };
-  const newBasket = convert(basket);
+ return Object.values(res);
+};
+const newBasket=convert(basket)
 
-  //Returning one if theres is repeating item
-  const ids = newBasket.map((o) => o.id);
-  const filtered = newBasket.filter(
-    ({ id }, index) => !ids.includes(id, index + 1)
-  );
 
   return (
     <div className="flex flex-col items-center lg:items-start lg:flex-row p-[20px] min-w-[380px]">
@@ -51,7 +57,7 @@ const Checkout = () => {
               <h2 className="font-bold text-lg border-b-gray-200 border-b-2 pb-[10px]">
                 Your Shopping basket
               </h2>
-              {filtered.map((item) => (
+              {newBasket.map((item:Item) => (
                 <CheckoutProduct
                   count={item.count}
                   key={item.id}

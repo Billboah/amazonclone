@@ -3,7 +3,17 @@ import StarIcon from "@mui/icons-material/Star";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "./features/basketSlice";
 
-const Product = ({
+interface Props {
+title : string
+category : string
+description:string
+id:number|string
+rating:number
+price:number
+image:string
+};
+
+const Product: React.FC<Props> = ({
   title,
   category,
   description,
@@ -40,7 +50,7 @@ const Product = ({
 
         <div>
           {Array(Math.round(rating))
-            .fill()
+            .fill(undefined)
             .map((rating, index) => (
               <StarIcon key={index} className="text-yellow-400 w-2" />
             ))}

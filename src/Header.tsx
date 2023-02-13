@@ -3,7 +3,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import { auth } from "./firebase";
 import { useState } from "react";
-import Logo from './amazonlogo.png'
+import Logo from "./amazonlogo.png";
 import { useSelector, useDispatch } from "react-redux";
 import { inputValue, selectItems, selectUser } from "./features/basketSlice";
 
@@ -14,7 +14,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const history=useHistory()
 
-  const searchInput = (event) => {
+  const searchInput = (event:{preventDefault:any}) => {
     event.preventDefault();
     dispatch(inputValue(value));
     if (value.length === 0){
@@ -73,7 +73,7 @@ const Header = () => {
                 Account & Lists
               </span>
             </div>
-          </Link>
+          </Link>jjjjjjjjjj
           <Link
             to={value  ? '/search' : '/'}
             className="text-white hover:border-solid hover:border-white hover:border-[1px] no-underline"

@@ -10,7 +10,7 @@ import { setUser } from "./features/basketSlice";
 import { useDispatch } from "react-redux";
 import SearchPage from "./SearchPage";
 
-function App() {
+const App: React.FC=()=> {
   const dispatch = useDispatch();
 
   useEffect(() => {

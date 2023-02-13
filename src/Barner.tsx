@@ -2,7 +2,7 @@ import React from "react";
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 
-const Barner = () => {
+const Barner: React.FC = () => {
   return (
     <div className="w-full z-0 md:mb-[-200px] lg:mb-[-250px] xl:mb-[-350px] gradient-mask-b-0">
       <Carousel

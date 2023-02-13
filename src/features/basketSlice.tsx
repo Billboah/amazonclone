@@ -1,6 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+export interface BasketState{
+  items: any[]
+  input: string | number
+  user: string | null 
+}
+const initialState: BasketState = {
   items: [],
   input: "",
   user: null,
@@ -17,7 +22,7 @@ export const basketSlice = createSlice({
       const index = state.items.findIndex(
         (basketItem) => basketItem.id === action.payload.id
       );
-      let newBasket = [...state.items];
+      const newBasket = [...state.items];
       if (index >= 0) {
         newBasket.splice(index, 1);
       } else {
@@ -39,8 +44,8 @@ export const basketSlice = createSlice({
 export const { addToBasket, removeFromBasket, inputValue, setUser } =
   basketSlice.actions;
 
-export const selectItems = (state) => state.basket.items;
-export const selectInput = (state) => state.basket.input;
-export const selectUser = (state) => state.basket.user;
+export const selectItems = (state: { basket: { items: any; }; }) => state.basket.items;
+export const selectInput = (state: { basket: { input: string; }; }) => state.basket.input;
+export const selectUser = (state: { basket: { user: string | null; }; }) => state.basket.user;
 
 export default basketSlice.reducer;

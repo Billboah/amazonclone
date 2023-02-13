@@ -3,7 +3,17 @@ import StarIcon from "@mui/icons-material/Star";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "./features/basketSlice";
 
-const SearchProducts = ({
+interface Props{
+  id:number;
+  title:string;
+  image:string;
+  description:string;
+  category:string;
+  price:number
+  rating:number;
+}
+
+const SearchProducts: React.FC<Props> = ({
   title,
   category,
   description,
@@ -40,7 +50,7 @@ const SearchProducts = ({
 
         <div>
           {Array(Math.round(rating))
-            .fill()
+            .fill(undefined)
             .map((rating, index) => (
               <StarIcon key={index} className="text-yellow-400 w-2" />
             ))}
@@ -50,7 +60,7 @@ const SearchProducts = ({
           <small>$</small>
           <strong>{price}</strong>
         </p>
-        {hasPrime && (
+        {hasPrime && (                                                    
           <div className="flex items-center">
             <img
               className="w-[30px]"

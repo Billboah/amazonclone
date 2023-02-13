@@ -2,11 +2,11 @@ import React from "react";
 import { selectItems, selectUser } from "./features/basketSlice";
 import { useSelector } from "react-redux";
 
-const Subtotal = () => {
+const Subtotal: React.FC = () => {
   const basket = useSelector(selectItems);
   const user = useSelector(selectUser);
 
-  const getBasketTotal =  basket?.reduce((total, basket) => {
+  const getBasketTotal =  basket?.reduce((total:number, basket:{price:number}) => {
       return basket.price + total
     }, 0);
 
