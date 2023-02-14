@@ -1,4 +1,4 @@
-import { Link, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
 import ShoppingCart from "@mui/icons-material/ShoppingCart";
 import { auth } from "./firebase";
@@ -58,7 +58,9 @@ const Header = () => {
         </form>
         <div className="flex justify-evenly items-center m-5">
           <Link
-            to={!user && "/login"}
+            to= {{
+              pathname: "/login",
+            state: {user: null}}}
             className="text-white hover:border-solid hover:border-white hover:border-[1px] no-underline"
           >
             <div
@@ -73,7 +75,7 @@ const Header = () => {
                 Account & Lists
               </span>
             </div>
-          </Link>jjjjjjjjjj
+          </Link>
           <Link
             to={value  ? '/search' : '/'}
             className="text-white hover:border-solid hover:border-white hover:border-[1px] no-underline"
