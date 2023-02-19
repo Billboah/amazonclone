@@ -76,7 +76,7 @@ const newBasket=convert(basket)
       </div>
 
       {basket.length > 0 && (
-        <div className="w-full h-fit lg:w-[600px]">
+        <div className="w-full h-fit lg:w-[700px]">
           <Subtotal />
         </div>
       )}

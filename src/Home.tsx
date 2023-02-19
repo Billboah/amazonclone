@@ -1,16 +1,19 @@
 import React, { useEffect, useState }  from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Barner from "./Barner";
+import { addProducts, selectProducts } from "./features/basketSlice";
 import ProductFeed from "./ProductFeed";
 
 const Home = () => {
-  const [products, setProducts] = useState([]);
   const [loading, setLoading]=useState(true)
+  const products=useSelector(selectProducts)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     fetch("https://fakestoreapi.com/products")
       .then((res) => res.json())
       .then((data) => {
-        setProducts(data);
+        dispatch(addProducts(data))
         setLoading(false)
       })
       .catch((e) => {
