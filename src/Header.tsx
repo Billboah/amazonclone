@@ -1,34 +1,34 @@
-import { Link, Redirect, useHistory } from "react-router-dom";
-import SearchIcon from "@mui/icons-material/Search";
-import ShoppingCart from "@mui/icons-material/ShoppingCart";
-import { auth } from "./firebase";
-import { useState } from "react";
-import Logo from "./amazonlogo.png";
-import { useSelector, useDispatch } from "react-redux";
-import { inputValue, selectItems, selectUser } from "./features/basketSlice";
+import { Link, useHistory } from 'react-router-dom'
+import SearchIcon from '@mui/icons-material/Search'
+import ShoppingCart from '@mui/icons-material/ShoppingCart'
+import { auth } from './firebase'
+import React, { useState } from 'react'
+import Logo from './amazonlogo.png'
+import { useSelector, useDispatch } from 'react-redux'
+import { inputValue, selectItems, selectUserName } from './features/basketSlice'
 
-const Header = () => {
-  const basket = useSelector(selectItems);
-  const user = useSelector(selectUser);
-  const [value, setValue] = useState("");
-  const dispatch = useDispatch();
-  const history=useHistory()
+const Header: React.FC = () => {
+  const basket = useSelector(selectItems)
+  const user = useSelector(selectUserName)
+  const [value, setValue] = useState('')
+  const dispatch = useDispatch()
+  const history = useHistory()
 
-  const searchInput = (event:{preventDefault:any}) => {
-    event.preventDefault();
-    dispatch(inputValue(value));
-    if (value.length === 0){
+  const searchInput = (event: { preventDefault: any }) => {
+    event.preventDefault()
+    dispatch(inputValue(value))
+    if (value.length === 0) {
       history.push('/')
-    }else{
+    } else {
       history.push('/search')
     }
-  };
+  }
 
   const login = () => {
     if (user) {
-      auth.signOut();
+      auth.signOut()
     }
-  };
+  }
 
   return (
     <nav className="bg-slate-800  flex flex-col sticky top-0 z-[100] min-w-[380px]">
@@ -39,8 +39,8 @@ const Header = () => {
         >
           <img
             className="object-contain w-[100px] pt-[10px]"
-          src={Logo}
-            alt=''
+            src={Logo}
+            alt=""
           />
         </Link>
         <form
@@ -58,9 +58,10 @@ const Header = () => {
         </form>
         <div className="flex justify-evenly items-center m-5">
           <Link
-            to= {{
-              pathname: "/login",
-            state: {user: null}}}
+            to={{
+              pathname: '/login',
+              state: { user: null },
+            }}
             className="text-white hover:border-solid hover:border-white hover:border-[1px] no-underline"
           >
             <div
@@ -69,7 +70,7 @@ const Header = () => {
               className="flex flex-col mx-[10px] "
             >
               <span className="text-[9px] md:text-[10px]">
-                {user ? `Hello,  ${user}` : "Hello, Sign In"}
+                {user ? `Hello,  ${user}` : 'Hello, Sign In'}
               </span>
               <span className="text-[11px] md:text-[13px] font-[800]">
                 Account & Lists
@@ -77,7 +78,7 @@ const Header = () => {
             </div>
           </Link>
           <Link
-            to={value  ? '/search' : '/'}
+            to={value ? '/search' : '/'}
             className="text-white hover:border-solid hover:border-white hover:border-[1px] no-underline"
           >
             <div className="flex flex-col mx-[10px] ">
@@ -92,7 +93,7 @@ const Header = () => {
             className="h-fit text-white flex hover:border-solid hover:border-white hover:border-[1px] no-underline mr-1"
           >
             <div className="flex items-center relative p-0 m-0">
-              <ShoppingCart sx={{ fontSize: "30px" }} className="m-0 p-0" />
+              <ShoppingCart sx={{ fontSize: '30px' }} className="m-0 p-0" />
               <div className="bg-orange-500 absolute top-0 right-0 text-[12px] font-[750] text-black rounded-full m-[-5px] px-1">
                 {basket?.length}
               </div>
@@ -115,7 +116,7 @@ const Header = () => {
         </button>
       </form>
     </nav>
-  );
-};
+  )
+}
 
-export default Header;
+export default Header

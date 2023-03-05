@@ -1,27 +1,29 @@
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Header from "./Header";
-import Home from "./Home";
-import Checkout from "./Checkout";
-import Login from "./Login";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebase";
-import { useEffect } from "react";
-import { setUser } from "./features/basketSlice";
-import { useDispatch } from "react-redux";
-import SearchPage from "./SearchPage";
+import React, { useEffect } from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Header from './Header'
+import Home from './Home'
+import Checkout from './Checkout'
+import Login from './Login'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from './firebase'
+import { setUserEmail, setUserName } from './features/basketSlice'
+import { useDispatch } from 'react-redux'
+import SearchPage from './SearchPage'
 
-const App: React.FC=()=> {
-  const dispatch = useDispatch();
+const App: React.FC = () => {
+  const dispatch = useDispatch()
 
   useEffect(() => {
     return onAuthStateChanged(auth, (user) => {
       if (user) {
-        dispatch(setUser(user.displayName));
+        dispatch(setUserName(user.displayName))
+        dispatch(setUserEmail(user.email))
       } else {
-        dispatch(setUser(null));
+        dispatch(setUserName(null))
+        dispatch(setUserEmail(null))
       }
-    });
-  });
+    })
+  })
   return (
     <Router>
       <div className="w-screen scrollbar-hide">
@@ -30,9 +32,9 @@ const App: React.FC=()=> {
             <Header />
             <Checkout />
           </Route>
-          <Route path='/search'>
-          <Header />
-          <SearchPage/>
+          <Route path="/search">
+            <Header />
+            <SearchPage />
           </Route>
           <Route path="/login">
             <Login />
@@ -44,7 +46,7 @@ const App: React.FC=()=> {
         </Switch>
       </div>
     </Router>
-  );
+  )
 }
 
-export default App;
+export default App

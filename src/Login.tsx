@@ -1,18 +1,18 @@
-import React, { useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
-import { auth,  googleProvider } from "./firebase";
-import { signInWithPopup, onAuthStateChanged } from "firebase/auth";
+import React, { useEffect } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import { auth, googleProvider } from './firebase'
+import { signInWithPopup, onAuthStateChanged } from 'firebase/auth'
 
-const Login = () => {
-  const history = useHistory();
+const Login: React.FC = () => {
+  const history = useHistory()
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-      history.push('/')
+        history.push('/')
       }
-    });
-  }, []);
+    })
+  }, [])
 
   return (
     <div className="h-screen bg-white flex flex-col items-center min-w-[380px]">
@@ -38,7 +38,7 @@ const Login = () => {
         </p>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

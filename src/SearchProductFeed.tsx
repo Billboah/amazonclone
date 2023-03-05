@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from "react-redux";
 import { selectInput } from './features/basketSlice';
-import SearchProducts from './SearchProducts';
+import Product from './Product';
 
 interface Props {
   products:any
@@ -29,7 +29,7 @@ const SearchProductFeed: React.FC<Props> = ({ products }) => {
       <div className="grid md:grid-flow-row-dense md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  ">
         {filtered
           .map((item: Items) => (
-            <SearchProducts
+            <Product
               key={item.id}
               id={item.id}
               title={item.title}

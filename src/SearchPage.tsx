@@ -1,10 +1,11 @@
-import { useSelector } from "react-redux";
-import Barner from "./Barner";
-import { selectProducts } from "./features/basketSlice";
-import SearchProductFeed from "./SearchProductFeed";
+import React from 'react'
+import { useSelector } from 'react-redux'
+import Barner from './Barner'
+import { selectProducts } from './features/basketSlice'
+import SearchProductFeed from './SearchProductFeed'
 
-const Home = () => {
-  const products=useSelector(selectProducts)
+const SearchPage: React.FC = () => {
+  const products = useSelector(selectProducts)
 
   return (
     <div className="max-w-screen-2xl min-w-[380px] ml-auto mr-auto">
@@ -13,7 +14,7 @@ const Home = () => {
         <SearchProductFeed products={products} />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Home;
+export default SearchPage

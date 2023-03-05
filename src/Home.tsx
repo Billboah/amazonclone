@@ -4,7 +4,7 @@ import Barner from "./Barner";
 import { addProducts, selectProducts } from "./features/basketSlice";
 import ProductFeed from "./ProductFeed";
 
-const Home = () => {
+const Home: React.FC = () => {
   const [loading, setLoading]=useState(true)
   const products=useSelector(selectProducts)
   const dispatch = useDispatch()
