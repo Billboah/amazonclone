@@ -9,6 +9,7 @@ import { auth } from './firebase'
 import { setUserEmail, setUserName } from './features/basketSlice'
 import { useDispatch } from 'react-redux'
 import SearchPage from './SearchPage'
+import ProductDetails from './ProductDetails'
 
 const App: React.FC = () => {
   const dispatch = useDispatch()
@@ -35,6 +36,10 @@ const App: React.FC = () => {
           <Route path="/search">
             <Header />
             <SearchPage />
+          </Route>
+          <Route path="/details/:id">
+            <Header />
+            <ProductDetails />
           </Route>
           <Route path="/login">
             <Login />

@@ -1,61 +1,44 @@
-import React, { useState } from "react";
-import StarIcon from "@mui/icons-material/Star";
-import { useDispatch } from "react-redux";
-import { addToBasket } from "./features/basketSlice";
+import React, { useState } from 'react'
+import StarIcon from '@mui/icons-material/Star'
+import { Link } from 'react-router-dom'
 
 interface Props {
-title : string
-category : string
-description:string
-id:number|string
-rating:number
-price:number
-image:string
-};
+  title: string
+  category: string
+  id: number | string
+  rating: number
+  price: number
+  image: string
+}
 
 const Product: React.FC<Props> = ({
   title,
   category,
-  description,
   id,
   rating,
   image,
   price,
 }) => {
-  const [hasPrime] = useState(Math.random() < 0.5);
-  const dispatch = useDispatch();
-
-  const addItemToBasket = () => {
-    const product = {
-      id: id,
-      title: title,
-      image: image,
-      price: price,
-      rating: rating,
-      description: description,
-      hasPrime: hasPrime,
-    };
-    dispatch(addToBasket(product));
-  };
+  const [hasPrime] = useState(Math.random() < 0.5)
 
   return (
-    <div className="flex flex-col relative m-5 p-10 bg-white z-30 min-w-[250px] ">
+    <Link
+      to={`details/${id}`}
+      className="flex flex-col relative m-5 p-10 bg-white z-30 min-w-[250px] rounded-lg transform hover:scale-105 active:scale-100 transition "
+    >
       <div className="flex flex-col justify-between h-full ">
         <p className="absolute top-2 right-2 text-xs text-gray-500 italic">
           {category}
         </p>
+        <p className="my-3  line-clamp-1 font-bold">{title}</p>
         <img className="w-[200px] h-[200px]" src={image} alt="" />
-
-        <p className="my-3 font-bold">{title}</p>
-
         <div>
           {Array(Math.round(rating))
             .fill(undefined)
-            .map((rating, index) => (
+            .map((_, index) => (
               <StarIcon key={index} className="text-yellow-400 w-2" />
             ))}
         </div>
-        <p className="text-xs  line-clamp-2 my-2">{description}</p>
         <p className="">
           <small>$</small>
           <strong>{price}</strong>
@@ -70,12 +53,9 @@ const Product: React.FC<Props> = ({
             <p className="text-xs">Free delivery</p>
           </div>
         )}
-        <button className="w-full button " onClick={addItemToBasket}>
-          Add to Cart
-        </button>
       </div>
-    </div>
-  );
-};
+    </Link>
+  )
+}
 
-export default Product;
+export default Product

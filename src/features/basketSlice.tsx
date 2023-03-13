@@ -1,63 +1,76 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 
-export interface BasketState{
+export interface BasketState {
   items: any[]
   input: string | number
-  userName: string | null 
-  userEmail: string | null 
+  userName: string | null
+  userEmail: string | null
   products: any
 }
 const initialState: BasketState = {
   items: [],
-  input: "",
+  input: '',
   userName: null,
   userEmail: null,
-  products: []
-};
+  products: [],
+}
 
 export const basketSlice = createSlice({
-  name: "basket",
+  name: 'basket',
   initialState,
   reducers: {
-    addProducts: (state, {payload})=>{
-      state.products=payload
+    addProducts: (state, { payload }) => {
+      state.products = payload
     },
     addToBasket: (state, action) => {
-      state.items = [...state.items, action.payload];
+      state.items = [...state.items, action.payload]
     },
     removeFromBasket: (state, action) => {
       const index = state.items.findIndex(
         (basketItem) => basketItem.id === action.payload.id
-      );
-      const newBasket = [...state.items];
+      )
+      const newBasket = [...state.items]
       if (index >= 0) {
-        newBasket.splice(index, 1);
+        newBasket.splice(index, 1)
       } else {
         console.warn(
           `can't remove product (id ${action.payload.id}) as it's not in basket!`
-        );
+        )
       }
-      state.items = newBasket;
+      state.items = newBasket
     },
     inputValue: (state, action) => {
-      state.input = action.payload;
+      state.input = action.payload
     },
     setUserName: (state, action) => {
-      state.userName = action.payload;
+      state.userName = action.payload
     },
     setUserEmail: (state, action) => {
-      state.userEmail = action.payload;
+      state.userEmail = action.payload
     },
   },
-});
+})
 
-export const { addToBasket, removeFromBasket, inputValue, setUserName, setUserEmail, addProducts } =
-  basketSlice.actions;
+export const {
+  addToBasket,
+  removeFromBasket,
+  inputValue,
+  setUserName,
+  setUserEmail,
+  addProducts,
+} = basketSlice.actions
 
-export const selectItems = (state: { basket: { items: any; }; }) => state.basket.items;
-export const selectInput = (state: { basket: { input: string; }; }) => state.basket.input;
-export const selectUserName = (state: { basket: { userName: string | null; }; }) => state.basket.userName;
-export const selectUserEmail = (state: { basket: { userEmail: string | null; }; }) => state.basket.userEmail;
-export const selectProducts = (state: { basket: { products: any; }; }) => state.basket.products;
+export const selectItems = (state: { basket: { items: any } }) =>
+  state.basket.items
+export const selectInput = (state: { basket: { input: string } }) =>
+  state.basket.input
+export const selectUserName = (state: {
+  basket: { userName: string | null }
+}) => state.basket.userName
+export const selectUserEmail = (state: {
+  basket: { userEmail: string | null }
+}) => state.basket.userEmail
+export const selectProducts = (state: { basket: { products: any } }) =>
+  state.basket.products
 
-export default basketSlice.reducer;
+export default basketSlice.reducer

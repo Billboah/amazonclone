@@ -1,16 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import CheckoutProduct from './CheckoutProduct'
-import {
-  selectItems,
-  selectUserEmail,
-  selectUserName,
-} from './features/basketSlice'
-import { loadStripe } from '@stripe/stripe-js'
-
-const stripePromise = loadStripe(
-  'pk_test_51MKk0PCp6tjr9dpDc3ay0WlNnGO8JuYRiVqUDXFQ68TvH5NmVjqXw9FBTwahIJyliCDmbJaC5l2nYGyxZf9lbvpe00rEZ5p0nC'
-)
+import { selectItems, selectUserName } from './features/basketSlice'
 
 interface Item {
   id: number
@@ -27,7 +18,6 @@ interface Item {
 const Checkout: React.FC = () => {
   const basket = useSelector(selectItems)
   const userName = useSelector(selectUserName)
-  const userEmail = useSelector(selectUserEmail)
 
   const convert = (arr: any[]) => {
     const res: { [index: string]: any } = {}
@@ -49,27 +39,6 @@ const Checkout: React.FC = () => {
     },
     0
   )
-
-  const createCheckoutSession = async () => {
-    const stripe = await stripePromise
-
-    if (stripe) {
-      const checkoutSession = await fetch(
-        'http://localhost:5000/create-checkout-session',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ items: newBasket, email: userEmail }),
-        }
-      ).then((response) => response.json())
-
-      const result = await stripe.redirectToCheckout({
-        sessionId: checkoutSession.data.id,
-      })
-
-      if (result.error) alert(result.error.message)
-    }
-  }
 
   return (
     <div className="flex flex-col items-center lg:items-start lg:flex-row p-[20px] min-w-[380px]">
@@ -115,11 +84,11 @@ const Checkout: React.FC = () => {
 
       {basket.length > 0 && (
         <div className="w-full h-fit lg:w-[700px]">
-          <div className="flex flex-col justify-space-between p-[20px] bg-white border-solid border-2 border-slate-100 m-[10px]">
+          <div className="flex flex-col justify-space-between p-[20px] bg-white border-solid border-2 border-slate-100 my-[10px] md:mx-[10px]">
             <>
               <p>
-                Subtotal ({basket.length} items):{' '}
-                <strong>$ {getBasketTotal.toFixed(2)}</strong>
+                Subtotal ({basket.length} items): <small>$</small>
+                <strong> {getBasketTotal.toFixed(2)}</strong>
               </p>
               <small className="flex items-center">
                 <input type="checkbox" className="mr-5px" />
@@ -128,7 +97,6 @@ const Checkout: React.FC = () => {
             </>
             <button
               role="link"
-              onClick={createCheckoutSession}
               disabled={!userName}
               className={`button mt-[10px] ${
                 !userName &&
